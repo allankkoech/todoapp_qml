@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/pages/HomePage.qml</file>
+        <file>qml/components/NavigationBar.qml</file>
+        <file>qml/components/TabBar.qml</file>
+        <file>qml/delegates/TodoDelegate.qml</file>
+        <file>qml/widgets/CheckBox.qml</file>
+        <file>qml/widgets/Icon.qml</file>
+        <file>assets/fonts/fontawesome.otf</file>
+        <file>qml/pages/HistoryPage.qml</file>
+        <file>qml/pages/SettingsPage.qml</file>
+        <file>qml/pages/AddTodoPage.qml</file>
+        <file>qml/components/PageNavigationBar.qml</file>
+        <file>qml/components/Page.qml</file>
+    </qresource>
+</RCC>
