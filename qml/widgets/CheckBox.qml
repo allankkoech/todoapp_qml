@@ -11,8 +11,10 @@ QQC2.CheckBox {
         implicitHeight: 26
         x: control.leftPadding
         y: parent.height / 2 - height / 2
-        radius: 3
-        border.color: control.down ? "#17a81a" : "#21be2b"
+        radius: control.checked ? 3 : 13
+        border.color: control.checked ? "#17a81a" : "grey" // "#21be2b"
+
+        Behavior on radius { NumberAnimation { duration: 500 }}
 
         Rectangle {
             width: 14
@@ -22,6 +24,8 @@ QQC2.CheckBox {
             radius: 2
             color: control.down ? "#17a81a" : "#21be2b"
             visible: control.checked
+
+            Behavior on visible { NumberAnimation { duration: 500 }}
         }
     }
 }

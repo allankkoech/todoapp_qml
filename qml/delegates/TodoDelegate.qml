@@ -13,9 +13,9 @@ Item {
     property date todoCreated
     property date todoStart
     property date todoEnd
-    property int todoIndex
+    property string todoUid
 
-    signal checkToggled(bool newState)
+    signal checkToggled(bool _done)
 
 
     Rectangle {
@@ -28,7 +28,7 @@ Item {
         Rectangle {
             width: 5
             height: parent.height
-            color: "green"
+            color: isDone ? "#17a81a" : "grey"
             anchors.left: parent.left
         }
 
