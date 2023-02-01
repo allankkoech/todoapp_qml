@@ -13,5 +13,8 @@
         <file>qml/pages/AddTodoPage.qml</file>
         <file>qml/components/PageNavigationBar.qml</file>
         <file>qml/components/Page.qml</file>
+        <file>qml/pages/Splash.qml</file>
+        <file>assets/img/splash.jpg</file>
+        <file>assets/img/logo.png</file>
     </qresource>
 </RCC>

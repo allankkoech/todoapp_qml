@@ -8,14 +8,15 @@ import "pages"
 
 Window {
     id: app
-    width: 640
+    width: 840
     height: 480
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Todo App")
 
+    property string themeColor: "#fd752d"
     property alias mainStack: mainStack
-    property alias fontAwesomeFontLoader: fontAwesomeFontLoader
     property alias todolistModel: _todoModel
+    property alias fontAwesomeFontLoader: fontAwesomeFontLoader
 
     Component.onCompleted: {
         if(initDb()) // Initialize database
@@ -27,17 +28,17 @@ Window {
     ListModel {
         id: _todoModel
 
-        onCountChanged: {
-            console.log("...............................................")
-            for(var i=0; i<count; i++) {
-                console.log(JSON.stringify(_todoModel.get(i)))
-            }
-            console.log("...............................................")
-        }
+        //        onCountChanged: {
+        //            console.log("...............................................")
+        //            for(var i=0; i<count; i++) {
+        //                console.log(JSON.stringify(_todoModel.get(i)))
+        //            }
+        //            console.log("...............................................")
+        //        }
     }
 
     onClosing: {
-        if(mainStack.depth == 1) {
+        if(mainStack.depth <= 2) {
             close.accepted = true
             return;
         }
@@ -51,13 +52,28 @@ Window {
         id: mainStack
         anchors.fill: parent
 
-        initialItem: HomePage {}
+        initialItem: Splash {}
     }
 
     FontLoader {
         id: fontAwesomeFontLoader
         source: "qrc:/assets/fonts/fontawesome.otf"
     }
+
+    // ---------------------------------------------------------------
+    // ---------------- NAVIGATION -----------------------------------
+    // ---------------------------------------------------------------
+
+    function navigateTo(page) {
+        if(page==="history") mainStack.push("qrc:/qml/pages/HistoryPage.qml")
+        else if(page==="new") mainStack.push("qrc:/qml/pages/AddTodoPage.qml")
+        else mainStack.push("qrc:/qml/pages/SettingsPage.qml")
+    }
+
+
+    // ----------------------------------------------------------------
+    // ---------------------  DATABASE FUNCTIONS   --------------------
+    // ----------------------------------------------------------------
 
     function getDb() {
         return LocalStorage.openDatabaseSync("TodoListDatabase", "1.0", "Db for all tasks!", 1000000);
@@ -185,11 +201,5 @@ Window {
             console.log(e)
         }
         return false;
-    }
-
-    function navigateTo(page) {
-        if(page==="history") mainStack.push("qrc:/qml/pages/HistoryPage.qml")
-        else if(page==="new") mainStack.push("qrc:/qml/pages/AddTodoPage.qml")
-        else mainStack.push("qrc:/qml/pages/SettingsPage.qml")
     }
 }

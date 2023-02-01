@@ -5,7 +5,7 @@ Rectangle {
     id: root
     height: 60
     width: parent.width
-    color: "#444"
+    color: themeColor
 
     property string title: ""
 

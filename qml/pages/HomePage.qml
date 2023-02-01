@@ -70,5 +70,6 @@ Item {
 
     TabBar {
         id: tabBar
+        visible: false
     }
 }
